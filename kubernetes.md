@@ -2,24 +2,25 @@
 
 ## Table of Contents
 
-1. Introduction to Kubernetes Deployment
-2. Introduction to Recreate Deployment Strategy
-3. Introduction to Rolling Updates Strategy
-4. Introduction to Kubernetes Services
-5. Kubernetes Service Types
-6. Use Case of Labels & Selectors in Kubernetes
-7. Kubernetes ClusterIP Service Overview
-8. Kubernetes NodePort Service Overview
-9. Kubernetes LoadBalancer Service Overview
-10. Kubernetes Pod Overview
-11. Introduction to Kubernetes ReplicaSets
-12. Scaling with ReplicaSets
-13. Docker Compose Setup & Basic Commands
-14. Creating a Docker Compose YAML File
-15. Introduction to Kubernetes Ingress Controller (Practical Demo)
-16. Docker Compose Commands with Use Cases
-17. Docker Swarm vs Kubernetes
-18. Kubernetes Namespace
+1. [Introduction to Kubernetes Deployment](#1-introduction-to-kubernetes-deployment)
+2. [Introduction to Recreate Deployment Strategy](#2-introduction-to-recreate-deployment-strategy)
+3. [Introduction to Rolling Updates Strategy](#3-introduction-to-rolling-updates-strategy)
+4. [Introduction to Kubernetes Services](#4-introduction-to-kubernetes-services)
+5. [Kubernetes Service Types](#5-kubernetes-service-types)
+6. [Use Case of Labels & Selectors in Kubernetes](#6-use-case-of-labels--selectors-in-kubernetes)
+7. [Kubernetes ClusterIP Service Overview](#7-kubernetes-clusterip-service-overview)
+8. [Kubernetes NodePort Service Overview](#8-kubernetes-nodeport-service-overview)
+9. [Kubernetes LoadBalancer Service Overview](#9-kubernetes-loadbalancer-service-overview)
+10. [Kubernetes Pod Overview](#10-kubernetes-pod-overview)
+11. [Introduction to Kubernetes ReplicaSets](#11-introduction-to-kubernetes-replicasets)
+12. [Scaling with ReplicaSets](#12-scaling-with-replicasets)
+13. [Docker Compose Setup & Basic Commands](#13-docker-compose-setup--basic-commands)
+14. [Creating a Docker Compose YAML File](#14-creating-a-docker-compose-yaml-file)
+15. [Introduction to Kubernetes Ingress Controller (Practical Demo)](#15-introduction-to-kubernetes-ingress-controller-practical-demo)
+16. [Docker Compose Commands with Use Cases](#16-docker-compose-commands-with-use-cases)
+17. [Docker Swarm vs Kubernetes](#17-docker-swarm-vs-kubernetes)
+18. [Kubernetes Namespace](#18-kubernetes-namespace)
+
 
 ---
 
