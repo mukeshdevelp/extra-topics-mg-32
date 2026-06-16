@@ -340,8 +340,7 @@ Networking = Roads connecting houses.
 
 ---
 
-# 5. Dockerfile (Detailed)
-
+# 5. Dockerfile
 [⬆ Back to Table of Contents](#table-of-contents)
 
 ## What is Dockerfile?
