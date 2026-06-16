@@ -1,0 +1,571 @@
+# Jenkins – Team Session Complete Learning Guide
+
+## Table of Contents
+
+1. [Freestyle Jobs](#1-freestyle-jobs)
+2. [General Configuration](#2-general-configuration)
+3. [Build Steps](#3-build-steps)
+4. [Post Build Actions](#4-post-build-actions)
+5. [Parameterized Jobs](#5-parameterized-jobs)
+6. [Global Tool Configuration](#6-global-tool-configuration)
+7. [Upstream / Downstream Jobs](#7-upstream--downstream-jobs)
+8. [Notifications](#8-notifications)
+9. [Jenkins HA & DR Strategies](#9-jenkins-ha--dr-strategies)
+
+---
+
+# 1. Freestyle Jobs
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Freestyle Job is the traditional Jenkins job type.
+
+It allows configuring builds using the Jenkins UI without writing pipeline code.
+
+Supports:
+
+* Build triggers
+* Build steps
+* Post-build actions
+* Parameterized execution
+
+Create Job:
+
+```text
+Dashboard
+↓
+New Item
+↓
+Freestyle Project
+```
+
+---
+
+## Job Flow
+
+```text
+Source Code
+↓
+Build
+↓
+Test
+↓
+Deploy
+```
+
+---
+
+## Required Plugins
+
+### Git Plugin
+
+Purpose:
+Connect Jenkins with Git repositories.
+
+### GitHub Plugin
+
+Purpose:
+GitHub integration.
+
+### Workspace Cleanup Plugin
+
+Purpose:
+Cleanup workspace after execution.
+
+### Build Timeout Plugin
+
+Purpose:
+Prevent hanging jobs.
+
+---
+
+## Layman Explanation
+
+Freestyle job is like filling a form and Jenkins performs actions automatically.
+
+---
+
+# 2. General Configuration
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+General configuration defines job-level settings.
+
+Settings:
+
+* Project Name
+* Description
+* Discard Old Builds
+* GitHub Project URL
+* Build Parameters
+* Concurrent Builds
+
+Common Config:
+
+```text
+General
+↓
+Discard Builds
+↓
+Keep Last 10
+```
+
+---
+
+## Recommended Plugins
+
+### Description Setter Plugin
+
+Update build descriptions.
+
+### Timestamper Plugin
+
+Add timestamps.
+
+### Build Name Setter
+
+Custom build naming.
+
+---
+
+## Layman Explanation
+
+General configuration is like setting profile preferences.
+
+---
+
+# 3. Build Steps
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Build Steps execute actual work.
+
+Examples:
+
+```bash
+echo Build Started
+
+mvn clean package
+
+docker build .
+```
+
+Types:
+
+* Execute Shell
+* Invoke Maven
+* Execute Windows Batch
+* Execute Pipeline
+
+---
+
+## Required Plugins
+
+### Pipeline Plugin
+
+Pipeline execution.
+
+### Maven Integration Plugin
+
+Run Maven builds.
+
+### Docker Plugin
+
+Docker integration.
+
+### NodeJS Plugin
+
+Node.js builds.
+
+---
+
+## Layman Explanation
+
+Build steps are recipe instructions.
+
+---
+
+# 4. Post Build Actions
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Actions executed after build completion.
+
+Examples:
+
+* Archive Artifacts
+* Email Notification
+* Trigger Jobs
+* Publish Reports
+
+Example:
+
+```text
+Build
+↓
+Archive
+↓
+Notify
+```
+
+---
+
+## Required Plugins
+
+### Email Extension Plugin
+
+Advanced email support.
+
+### HTML Publisher Plugin
+
+Publish reports.
+
+### JUnit Plugin
+
+Publish test reports.
+
+### ArtifactDeployer Plugin
+
+Store artifacts.
+
+---
+
+## Layman Explanation
+
+After cooking food → package and send.
+
+---
+
+# 5. Parameterized Jobs
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Parameterized jobs allow runtime input.
+
+Types:
+
+```text
+String
+Choice
+Boolean
+Password
+File
+```
+
+Example:
+
+```text
+ENV=dev
+VERSION=1.2
+```
+
+---
+
+## Advanced Parameters
+
+### Active Choice Parameter
+
+Dynamic dropdown.
+
+### Reactive Parameter
+
+Dependent dropdown.
+
+---
+
+## Required Plugins
+
+### Active Choices Plugin
+
+Dynamic parameters.
+
+### Extended Choice Parameter Plugin
+
+Multi-select support.
+
+### Uno Choice Plugin
+
+Advanced selection.
+
+---
+
+## Layman Explanation
+
+Parameterized jobs = asking user questions before execution.
+
+---
+
+# 6. Global Tool Configuration
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Configure shared tools globally.
+
+Navigate:
+
+```text
+Manage Jenkins
+↓
+Tools
+```
+
+Configure:
+
+* JDK
+* Git
+* Maven
+* Docker
+* SonarQube
+
+---
+
+## Required Plugins
+
+### Maven Integration
+
+Maven installation.
+
+### Docker Plugin
+
+Docker integration.
+
+### SonarQube Scanner Plugin
+
+Code quality.
+
+### NodeJS Plugin
+
+Node installation.
+
+---
+
+## Layman Explanation
+
+Install kitchen appliances once and use everywhere.
+
+---
+
+# 7. Upstream / Downstream Jobs
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Chain jobs.
+
+Example:
+
+```text
+Build
+ ↓
+Test
+ ↓
+Deploy
+```
+
+Trigger Methods:
+
+* Build After Other Projects
+* Pipeline Trigger
+
+---
+
+## Required Plugins
+
+### Parameterized Trigger Plugin
+
+Pass parameters.
+
+### Build Pipeline Plugin
+
+Visual chaining.
+
+---
+
+## Example
+
+```groovy
+build job: 'deploy'
+```
+
+---
+
+## Layman Explanation
+
+One domino starts another.
+
+---
+
+# 8. Notifications
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+Notify users after execution.
+
+Channels:
+
+* Email
+* Slack
+* Teams
+* Webhook
+
+Example:
+
+```text
+Success
+↓
+Send Notification
+```
+
+---
+
+## Required Plugins
+
+### Email Extension Plugin
+
+SMTP notifications.
+
+### Slack Notification Plugin
+
+Slack alerts.
+
+### Office365 Connector
+
+Teams integration.
+
+### Webhook Plugin
+
+Custom notifications.
+
+---
+
+## SMTP Example
+
+```text
+smtp.gmail.com
+```
+
+---
+
+## Layman Explanation
+
+Delivery status updates.
+
+---
+
+# 9. Jenkins HA & DR Strategies
+
+[⬆ Back to Table of Contents](#table-of-contents)
+
+## Technical Explanation
+
+HA = High Availability
+
+DR = Disaster Recovery
+
+Goals:
+
+* No downtime
+* Faster recovery
+* Data protection
+
+Architecture:
+
+```text
+Load Balancer
+      ↓
+Primary Jenkins
+      ↓
+Backup Jenkins
+```
+
+---
+
+## HA Methods
+
+### Active Passive
+
+Primary + standby.
+
+### Active Active
+
+Multiple controllers.
+
+---
+
+## DR Components
+
+Backup:
+
+```bash
+/var/lib/jenkins
+```
+
+Backup Includes:
+
+* Jobs
+* Plugins
+* Credentials
+* Config
+
+---
+
+## Required Plugins
+
+### ThinBackup Plugin
+
+Backup and restore.
+
+### Configuration as Code Plugin
+
+Store configuration.
+
+### S3 Plugin
+
+Store backup remotely.
+
+### Monitoring Plugin
+
+Health monitoring.
+
+---
+
+## Best Practices
+
+✔ Daily backups
+✔ Store outside server
+✔ Test restore process
+✔ Monitor availability
+✔ Use IaC
+
+---
+
+# Summary
+
+This guide covered:
+
+✅ Freestyle Jobs
+✅ General Configuration
+✅ Build Steps
+✅ Post Build Actions
+✅ Parameterized Jobs
+✅ Global Tool Config
+✅ Upstream / Downstream Jobs
+✅ Notifications
+✅ Jenkins HA & DR
+
+Happy Learning 🚀
